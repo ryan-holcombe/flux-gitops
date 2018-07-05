@@ -5,9 +5,9 @@ metadata:
   name: angular-okta
   namespace: default
   labels:
-    chart: angular-okta
+    chart: generic-service
 spec:
-  chartGitPath: angular-okta
+  chartGitPath: generic-service
   values:
     image: rholcombe/angular-okta:v0.2.0-24-gb1d8b8a
     imageReplicaCount: 1

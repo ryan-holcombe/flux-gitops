@@ -1,0 +1,9 @@
+name: generic-service
+home: https://github.com/sythe21/generic-service
+version: 1.0.0
+description: S3 API
+sources:
+  - https://github.com/sythe21/generic-service
+maintainers:
+  - name: Ryan Holcombe
+    email: rholcombe30@gmail.com

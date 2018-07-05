@@ -1,12 +1,13 @@
 {{- if .Values.ingress.enabled }}
+---
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
+  name: "{{.Release.Name}}"
 {{- if .Values.ingress.annotations }}
   annotations:
 {{ toYaml .Values.ingress.annotations | indent 4 }}
 {{- end }}
-  name: "{{.Release.Name}}"
 spec:
   rules:
   {{- range $host, $paths := .Values.ingress.hosts }}

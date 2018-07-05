@@ -2,14 +2,14 @@
 apiVersion: helm.integrations.flux.weave.works/v1alpha2
 kind: FluxHelmRelease
 metadata:
-  name: s3api
+  name: generic-service
   namespace: default
   labels:
-    chart: s3api
+    chart: generic-service
 spec:
-  chartGitPath: s3api
+  chartGitPath: generic-service
   values:
-    image: rholcombe/s3api:d20a12b
+    image: rholcombe/generic-service:d20a12b
     imageReplicaCount: 1
     imageResources:
       cpu: "10m"
@@ -24,6 +24,6 @@ spec:
         kubernetes.io/ingress.class: "nginx"
         certmanager.k8s.io/cluster-issuer: letsencrypt-prod
       tls:
-      - secretName: s3api-tls
+      - secretName: generic-service-tls
         hosts:
-        - s3api.gke.rholcombe30.com
+        - generic-service.gke.rholcombe30.com
