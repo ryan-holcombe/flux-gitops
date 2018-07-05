@@ -2,14 +2,14 @@
 apiVersion: helm.integrations.flux.weave.works/v1alpha2
 kind: FluxHelmRelease
 metadata:
-  name: s3api
+  name: angular-okta
   namespace: default
   labels:
-    chart: s3api
+    chart: angular-okta
 spec:
-  chartGitPath: s3api
+  chartGitPath: angular-okta
   values:
-    image: rholcombe/s3api:d20a12b
+    image: rholcombe/angular-okta:v0.2.0-24-gb1d8b8a
     imageReplicaCount: 1
     imageResources:
       cpu: "10m"
@@ -18,12 +18,12 @@ spec:
     ingress:
       enabled: true
       hosts:
-        s3api.gke.rholcombe30.com:
+        angular-okta.gke.rholcombe30.com:
         - /
       annotations:
         kubernetes.io/ingress.class: "nginx"
         certmanager.k8s.io/cluster-issuer: letsencrypt-prod
       tls:
-      - secretName: s3api-tls
+      - secretName: angular-okta-tls
         hosts:
-        - s3api.gke.rholcombe30.com
+        - angular-okta.gke.rholcombe30.com
