@@ -1,23 +1,23 @@
 ---
-  apiVersion: helm.integrations.flux.weave.works/v1alpha2
-  kind: FluxHelmRelease
-  metadata:
-    name: s3api
-    namespace: default
-    labels:
-      chart: s3api
-  spec:
-    chartGitPath: s3api
-    values:
-      image: rholcombe/s3api:e02beed
-      imageReplicaCount: 1
-      imageResources:
-        cpu: "10m"
-        memory: "128Mi"
-      imagePullPolicy: Always
-      ingress:
-        enabled: true
-        hostname: s3api.gke.rholcombe30.com
-        annotations:
-           kubernetes.io/ingress.class: nginx
-        tls: false
+apiVersion: helm.integrations.flux.weave.works/v1alpha2
+kind: FluxHelmRelease
+metadata:
+  name: s3api
+  namespace: default
+  labels:
+    chart: s3api
+spec:
+  chartGitPath: s3api
+  values:
+    image: rholcombe/s3api:1e3cf42
+    imageReplicaCount: 1
+    imageResources:
+      cpu: "10m"
+      memory: "128Mi"
+    imagePullPolicy: Always
+    ingress:
+      enabled: true
+      hostname: s3api.gke.rholcombe30.com
+      annotations:
+        kubernetes.io/ingress.class: nginx
+      tls: false
