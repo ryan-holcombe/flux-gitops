@@ -2,7 +2,7 @@
 apiVersion: helm.integrations.flux.weave.works/v1alpha2
 kind: FluxHelmRelease
 metadata:
-  name: generic-service
+  name: s3api
   namespace: default
   labels:
     chart: generic-service
