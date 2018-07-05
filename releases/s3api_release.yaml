@@ -9,7 +9,7 @@ metadata:
 spec:
   chartGitPath: generic-service
   values:
-    image: rholcombe/generic-service:d20a12b
+    image: rholcombe/generic-service:1e3cf42
     imageReplicaCount: 1
     imageResources:
       cpu: "10m"
