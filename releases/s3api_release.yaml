@@ -1,0 +1,14 @@
+---
+  apiVersion: helm.integrations.flux.weave.works/v1alpha2
+  kind: FluxHelmRelease
+  metadata:
+    name: mariadb
+    namespace: test
+    labels:
+      chart: mariadb
+  spec:
+    chartGitPath: mariadb
+    values:
+      image: bitnami/mariadb:10.1.30-r1
+      persistence:
+        enabled: false
