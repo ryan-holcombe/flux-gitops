@@ -9,7 +9,7 @@ metadata:
 spec:
   chartGitPath: s3api
   values:
-    image: rholcombe/s3api:28f43d3
+    image: rholcombe/s3api:d20a12b
     imageReplicaCount: 1
     imageResources:
       cpu: "10m"
