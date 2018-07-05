@@ -16,10 +16,8 @@ spec:
         backend:
           serviceName: "{{.Release.Name}}"
           servicePort: {{ .Values.service.externalPort }}
-{{- if .Values.ingress.tls }}
+  {{- if .Values.ingress.tls }}
   tls:
-  - secretName: {{ .Values.ingress.hostname | quote }}
-    hosts:
-      - {{ .Values.ingress.hostname | quote }}
-{{- end -}}
+{{ toYaml .Values.ingress.tls | indent 4 }}
+  {{- end -}}
 {{- end }}

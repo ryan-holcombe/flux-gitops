@@ -19,5 +19,10 @@ spec:
       enabled: true
       hostname: s3api.gke.rholcombe30.com
       annotations:
-        kubernetes.io/ingress.class: nginx
-      tls: false
+        kubernetes.io/ingress.class: "nginx"
+        ingress.kubernetes.io/ssl-redirect: "false"
+        certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+    tls:
+    - hosts:
+      - dashboard.${var.dns_gke_host}
+      secretName: dashboard-tls
