@@ -22,7 +22,7 @@ spec:
         kubernetes.io/ingress.class: "nginx"
         ingress.kubernetes.io/ssl-redirect: "false"
         certmanager.k8s.io/cluster-issuer: letsencrypt-prod
-    tls:
-    - hosts:
-      - dashboard.${var.dns_gke_host}
-      secretName: dashboard-tls
+      tls:
+      - hosts:
+        - dashboard.${var.dns_gke_host}
+        secretName: dashboard-tls
