@@ -1,0 +1,9 @@
+name: angular-okta
+home: https://github.com/sythe21
+version: 1.0.0
+description: Angular Okta
+sources:
+  - https://github.com/sythe21/angular-okta
+maintainers:
+  - name: Ryan Holcombe
+    email: rholcombe30@gmail.com

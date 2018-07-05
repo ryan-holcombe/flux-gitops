@@ -5,11 +5,11 @@ metadata:
   name: s3api
   namespace: default
   labels:
-    chart: generic-service
+    chart: s3api
 spec:
-  chartGitPath: generic-service
+  chartGitPath: s3api
   values:
-    image: rholcombe/generic-service:1e3cf42
+    image: rholcombe/s3api:1e3cf42
     imageReplicaCount: 1
     imageResources:
       cpu: "10m"
@@ -24,6 +24,6 @@ spec:
         kubernetes.io/ingress.class: "nginx"
         certmanager.k8s.io/cluster-issuer: letsencrypt-prod
       tls:
-      - secretName: generic-service-tls
+      - secretName: s3api-tls
         hosts:
-        - generic-service.gke.rholcombe30.com
+        - s3api.gke.rholcombe30.com
