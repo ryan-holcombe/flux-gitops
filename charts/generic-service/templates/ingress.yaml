@@ -1,3 +1,5 @@
+{{- $servicePort := .Values.service.externalPort -}}
+{{- $serviceName := .Release.Name -}}
 {{- if .Values.ingress.enabled }}
 ---
 apiVersion: extensions/v1beta1
@@ -17,8 +19,8 @@ spec:
       {{- range $paths }}
       - path: {{ . }}
         backend:
-          serviceName: "{{.Release.Name}}"
-          servicePort: {{ .Values.service.externalPort }}
+          serviceName: {{ $serviceName }}
+          servicePort: {{ $servicePort }}
       {{- end -}}
   {{- end -}}
   {{- if .Values.ingress.tls }}
