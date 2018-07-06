@@ -1,0 +1,23 @@
+---
+apiVersion: helm.integrations.flux.weave.works/v1alpha2
+kind: FluxHelmRelease
+metadata:
+  name: nginx-ingress
+  namespace: default
+  labels:
+    chart: nginx-ingress
+spec:
+  chartGitPath: nginx-ingress
+  releaseName: nginx-ingress
+  values:
+    image:
+      repository: quay.io/kubernetes-ingress-controller/nginx-ingress-controller
+      tag: "0.15.0"
+      pullPolicy: IfNotPresent
+    controller:
+      service:
+        type: LoadBalancer
+      publishService:
+        enabled: true
+    rbac:
+      create: true
