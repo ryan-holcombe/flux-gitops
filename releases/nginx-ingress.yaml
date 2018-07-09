@@ -10,8 +10,10 @@ spec:
   chartGitPath: nginx-ingress
   releaseName: nginx-ingress
   values:
-    image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.16.2
-    imagePullPolicy: IfNotPresent
+    controller:
+      image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.16.2
+      imagePullPolicy: IfNotPresent
+      imageTag: 0.16.2
     controller:
       service:
         type: LoadBalancer
