@@ -1,0 +1,17 @@
+---
+apiVersion: helm.integrations.flux.weave.works/v1alpha2
+kind: FluxHelmRelease
+metadata:
+  name: cert-manager
+  namespace: kube-system
+  labels:
+    chart: cert-manager
+spec:
+  chartGitPath: cert-manager
+  values:
+    image: quay.io/jetstack/cert-manager-controller:v0.3.2
+    ingressShim:
+      defaultIssuerName: letsencrypt-prod
+      defaultIssuerKind: ClusterIssuer
+    rbac:
+      create: true
