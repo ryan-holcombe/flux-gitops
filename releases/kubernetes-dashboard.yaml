@@ -2,12 +2,12 @@
 apiVersion: helm.integrations.flux.weave.works/v1alpha2
 kind: FluxHelmRelease
 metadata:
-  name: external-dns
+  name: kubernetes-dashboard
   namespace: default
   labels:
-    chart: external-dns
+    chart: kubernetes-dashboard
 spec:
-  chartGitPath: external-dns
+  chartGitPath: kubernetes-dashboard
   values:
     image: k8s.gcr.io/kubernetes-dashboard-amd64:v1.8.3
     ingress:
