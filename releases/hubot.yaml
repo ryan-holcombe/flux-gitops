@@ -25,8 +25,8 @@ spec:
     hubot:
       config:
         HUBOT_JENKINS_URL: http://jenkins.default.svc.cluster.local:8080/
-        HUBOT_JENKINS_AUTH: admin:${var.jenkins_api_token}
-      slackToken: "${var.hubot_slack_token}"
+        HUBOT_JENKINS_AUTH: admin:572311c9f518932bf5b723f2e592307c
+      slackToken: xoxb-276083985012-393108837890-dO3Yux17QLvWIhm0WJCJFRax
       scripts:
         health.coffee: |
           # Description
