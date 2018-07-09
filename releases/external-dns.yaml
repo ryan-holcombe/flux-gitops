@@ -1,0 +1,20 @@
+---
+apiVersion: helm.integrations.flux.weave.works/v1alpha2
+kind: FluxHelmRelease
+metadata:
+  name: external-dns
+  namespace: default
+  labels:
+    chart: external-dns
+spec:
+  chartGitPath: external-dns
+  values:
+    image: registry.opensource.zalan.do/teapot/external-dns:v0.5.0
+    imageReplicaCount: 1
+    domainFilters: ["gke.rholcombe30.com."]
+    provider: google
+    google:
+      project: rholcombe-gke-test
+      serviceAccountSecret: "service-account-credentials"
+    rbac:
+      create: true
