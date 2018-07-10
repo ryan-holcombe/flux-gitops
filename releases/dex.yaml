@@ -1,0 +1,98 @@
+---
+apiVersion: helm.integrations.flux.weave.works/v1alpha2
+kind: FluxHelmRelease
+metadata:
+  name: dex
+  namespace: kube-system
+  labels:
+    chart: dex
+spec:
+  chartGitPath: dex
+  values:
+    image: gfkse/oauth2_proxy:kubernetes-3-ca-certs
+    imagePullPolicy: IfNotPresent
+
+    global:
+      deployEnv: dev
+
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: "nginx"
+        certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+      path: /
+      hosts:
+      - dex.gke.rholcombe30.com
+      tls:
+      - secretName: dex.gke.rholcombe30.com
+        hosts:
+        - dex.example.com
+
+    rbac:
+      create: true
+
+    serviceAccount:
+      create: true
+
+    envSecrets:
+      # GitHub
+      - GITHUB_CLIENT_ID
+      - GITHUB_CLIENT_SECRET
+      # Okta (oidc)
+      - OKTA_CLIENT_ID
+      - OKTA_CLIENT_SECRET
+
+    # Configuration file for Dex
+    # Certainly secret fields can use environment variables
+    #
+    config: |-
+      issuer: https://dex.gke.rholcombe30.com
+
+      storage:
+        type: kubernetes
+        config:
+          inCluster: true
+
+      web:
+        http: 0.0.0.0:5556
+
+      expiry:
+        signingKeys: "6h"
+        idTokens: "24h"
+
+      logger:
+        level: debug
+        format: json
+
+      oauth2:
+        responseTypes: ["code", "token", "id_token"]
+        skipApprovalScreen: true
+
+      # GitHub configure 'OAuth Apps' -> 'New OAuth App', add callback URL
+      # https://github.com/settings/developers
+      - type: github
+        id: github
+        name: GitHub
+        config:
+          clientID: $GITHUB_CLIENT_ID
+          clientSecret: $GITHUB_CLIENT_SECRET
+          redirectURI:  https://dex.gke.rholcombe30.com/callback
+          # 'orgs' can be used to map groups from Github
+          # https://github.com/coreos/dex/blob/master/Documentation/connectors/github.md
+          #orgs:
+          #- name: foo
+          #  teams:
+          #  - team-red
+          #  - team-blue
+          #- name: bar
+
+      # Google APIs account, 'Create Credentials' -> 'OAuth Client ID', add callback URL
+      # https://console.developers.google.com/apis/credentials
+      - type: oidc
+        id: okta
+        name: Okta
+        config:
+          issuer: https://dev-638248.oktapreview.com/oauth2/default
+          clientID: $OKTA_CLIENT_ID
+          clientSecret: $OKTA_CLIENT_SECRET
+          redirectURI:  https://dex.gke.rholcombe30.com/callback
