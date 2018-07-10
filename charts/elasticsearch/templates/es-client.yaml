@@ -88,12 +88,12 @@ spec:
         livenessProbe:
           tcpSocket:
             port: 9300
-          initialDelaySeconds: 30
+          initialDelaySeconds: 60
         readinessProbe:
           httpGet:
             path: /_cluster/health
             port: 9200
-          initialDelaySeconds: 30
+          initialDelaySeconds: 60
           timeoutSeconds: 5
         volumeMounts:
         - name: storage
