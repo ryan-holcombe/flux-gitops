@@ -92,6 +92,7 @@ spec:
         livenessProbe:
           tcpSocket:
             port: 9300
+        initialDelaySeconds: 20
         volumeMounts:
         - name: storage
           mountPath: /data
