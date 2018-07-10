@@ -22,8 +22,8 @@ spec:
     spec:
       containers:
       - name: kibana
-        image: "{{ .Values.kibana.image.repository }}:{{ .Values.kibana.image.tag }}"
-        imagePullPolicy: {{ .Values.kibana.image.pullPolicy }}
+        image: "{{ .Values.kibana.image }}"
+        imagePullPolicy: {{ .Values.kibana.imagePullPolicy }}
         env:
         - name: CLUSTER_NAME
           value: {{ .Values.common.env.CLUSTER_NAME }}
