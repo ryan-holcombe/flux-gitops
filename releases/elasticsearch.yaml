@@ -1,0 +1,51 @@
+---
+apiVersion: helm.integrations.flux.weave.works/v1alpha2
+kind: FluxHelmRelease
+metadata:
+  name: elasticsearch
+  namespace: default
+  labels:
+    chart: elasticsearch
+spec:
+  chartGitPath: elasticsearch
+  releaseName: elasticsearch
+  values:
+    es:
+      image: quay.io/pires/docker-elasticsearch-kubernetes:6.3.0
+    init:
+      image: busybox:latest
+    curator:
+      image: bobrik/curator:latest
+
+    common:
+      serviceType: NodePort
+
+    client:
+      replicas: 1
+
+    data:
+      replicas: 1
+
+    master:
+      replicas: 1
+      env:
+        NUMBER_OF_MASTERS: "1"
+
+    kibana:
+      image: docker.elastic.co/kibana/kibana-oss:6.3.1
+      env:
+        XPACK_GRAPH_ENABLED: "false"
+        XPACK_ML_ENABLED: "false"
+        XPACK_REPORTING_ENABLED: "false"
+        XPACK_SECURITY_ENABLED: "false"
+      ingress:
+        enabled: true
+        hosts:
+          - kibana.gke.rholcombe30.com
+        annotations:
+          kubernetes.io/ingress.class: "nginx"
+          certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+        tls:
+        - secretName: hubot-tls
+          hosts:
+            - kibana.gke.rholcombe30.com

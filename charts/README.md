@@ -6,3 +6,4 @@
 * kubernetes-dashboard - https://github.com/kubernetes/charts/tree/master/stable/kubernetes-dashboard
 * cert-manager - https://github.com/kubernetes/charts/tree/master/stable/cert-manager
 * hubot - https://github.com/kubernetes/charts/tree/master/stable/hubot
+* elasticsearch - https://github.com/clockworksoul/helm-elasticsearch
