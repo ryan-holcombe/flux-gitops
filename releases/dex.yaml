@@ -24,9 +24,9 @@ spec:
       hosts:
       - dex.gke.rholcombe30.com
       tls:
-      - secretName: dex.gke.rholcombe30.com
+      - secretName: dex-tls
         hosts:
-        - dex.example.com
+        - dex.gke.rholcombe30.com
 
     rbac:
       create: true
