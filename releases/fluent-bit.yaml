@@ -1,0 +1,19 @@
+---
+apiVersion: helm.integrations.flux.weave.works/v1alpha2
+kind: FluxHelmRelease
+metadata:
+  name: fluent-bit
+  namespace: default
+  labels:
+    chart: fluent-bit
+spec:
+  chartGitPath: fluent-bit
+  values:
+    image: fluent/fluent-bit:0.13.0
+    backend:
+      type: es
+      es:
+        host: elasticsearch-elasticsearch.default.svc.cluster.local
+        port: 9200
+    rbac:
+      create: true
