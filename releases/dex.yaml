@@ -68,6 +68,7 @@ spec:
         responseTypes: ["code", "token", "id_token"]
         skipApprovalScreen: true
 
+      connectors:
       # GitHub configure 'OAuth Apps' -> 'New OAuth App', add callback URL
       # https://github.com/settings/developers
       - type: github
