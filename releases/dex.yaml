@@ -97,3 +97,11 @@ spec:
           clientID: $OKTA_CLIENT_ID
           clientSecret: $OKTA_CLIENT_SECRET
           redirectURI:  https://dex.gke.rholcombe30.com/callback
+
+      # The 'name' must match the k8s API server's 'oidc-client-id'
+      staticClients:
+      - id: my-cluster
+        name: "my-cluster"
+        secret: "pUBnBOY80SnXgjibTYM9ZWNzY2xreNGQok"
+        redirectURIs:
+        - https://angular-okta.gke.rholcombe30.com/implicit/callback
