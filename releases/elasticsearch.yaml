@@ -33,11 +33,6 @@ spec:
 
     kibana:
       image: docker.elastic.co/kibana/kibana-oss:6.3.1
-      env:
-        XPACK_GRAPH_ENABLED: "false"
-        XPACK_ML_ENABLED: "false"
-        XPACK_REPORTING_ENABLED: "false"
-        XPACK_SECURITY_ENABLED: "false"
       ingress:
         enabled: true
         hosts:
