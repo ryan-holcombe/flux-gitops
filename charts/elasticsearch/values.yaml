@@ -144,10 +144,8 @@ service:
 kibana:
   enabled: true
   replicas: 1
-  image:
-    repository: docker.elastic.co/kibana/kibana-oss
-    tag: 6.2.3
-    pullPolicy: Always
+  image: docker.elastic.co/kibana/kibana-oss:6.2.3
+  imagePullPolicy: Always
   httpPort: 80
   resources:
     limits:
