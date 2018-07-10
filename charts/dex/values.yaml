@@ -6,7 +6,7 @@ global:
 
 replicaCount: 1
 
-image: gfkse/oauth2_proxy:kubernetes-3-ca-certs
+image: quay.io/coreos/dex:v2.10.0
 imagePullPolicy: IfNotPresent
 
 service:
@@ -197,4 +197,4 @@ envSecrets:
   #- GITHUB_CLIENT_SECRET
   # Okta (oidc)
   #- OKTA_CLIENT_ID
-  #- OKTA_CLIENT_SECRET
+  - OKTA_CLIENT_SECRET
