@@ -102,8 +102,8 @@ spec:
       staticClients:
       - id: my-cluster
         name: "my-cluster"
-        secret: "pUBnBOY80SnXgjibTYM9ZWNzY2xreNGQok"
+        secret: "ZXhhbXBsZS1hcHAtc2VjcmV0"
         redirectURIs:
         - https://angular-okta.gke.rholcombe30.com/implicit/callback
-        - http://localhost:5555/callback
+        - http://127.0.0.1:5555/callback
         - https://dex.gke.rholcombe30.com/callback
