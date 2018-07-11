@@ -11,17 +11,18 @@ spec:
   values:
     image: k8s.gcr.io/kubernetes-dashboard-amd64:v1.8.3
     ingress:
+      enabled: true
+      hosts:
+        - dashboard.gke.rholcombe30.com
+      path: /
       annotations:
         kubernetes.io/ingress.class: "nginx"
         ingress.kubernetes.io/ssl-redirect: "false"
         certmanager.k8s.io/cluster-issuer: letsencrypt-prod
         nginx.ingress.kubernetes.io/secure-backends: "true"
       tls:
-      - hosts:
-        - dashboard.gke.rholcombe30.com
-        secretName: dashboard-tls
-      enabled: true
+      - secretName: dashboard-tls
       hosts:
-        - dashboard.gke.rholcombe30.com
+      - dashboard.gke.rholcombe30.com
     rbac:
       create: true
