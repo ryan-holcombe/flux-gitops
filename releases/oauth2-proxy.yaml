@@ -18,7 +18,7 @@ spec:
       email-domain: "*"
       http-address: "0.0.0.0:4180"
       provider: oidc
-      redirect-url: https://dex.gke.rholcombe30.com/callback
+      redirect-url: https://auth.gke.rholcombe30.com/oauth2/callback
       oidc-issuer-url: https://dex.gke.rholcombe30.com
       cookie-secure: false
 

@@ -107,3 +107,4 @@ spec:
         - https://angular-okta.gke.rholcombe30.com/implicit/callback
         - http://127.0.0.1:5555/callback
         - https://dex.gke.rholcombe30.com/callback
+        - https://auth.gke.rholcombe30.com/oauth2/callback
