@@ -8,3 +8,5 @@
 * hubot - https://github.com/kubernetes/charts/tree/master/stable/hubot
 * elasticsearch - https://github.com/clockworksoul/helm-elasticsearch
 * fluent-bit - https://github.com/kubernetes/charts/tree/master/stable/fluent-bit
+* dex - https://github.com/mintel/dex-k8s-authenticator/tree/master/charts/dex
+* oauth2-proxy - https://github.com/kubernetes/charts/tree/master/stable/oauth2-proxy

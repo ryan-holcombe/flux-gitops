@@ -105,3 +105,5 @@ spec:
         secret: "pUBnBOY80SnXgjibTYM9ZWNzY2xreNGQok"
         redirectURIs:
         - https://angular-okta.gke.rholcombe30.com/implicit/callback
+        - http://localhost:5555/callback
+        - https://dex.gke.rholcombe30.com/callback
