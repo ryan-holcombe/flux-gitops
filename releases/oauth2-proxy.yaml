@@ -1,0 +1,39 @@
+---
+apiVersion: helm.integrations.flux.weave.works/v1alpha2
+kind: FluxHelmRelease
+metadata:
+  name: oauth2-proxy
+  namespace: default
+  labels:
+    chart: oauth2-proxy
+spec:
+  chartGitPath: oauth2-proxy
+  values:
+    image: gfkse/oauth2_proxy:kubernetes-3-ca-certs
+    config:
+      clientID: "my-cluster"
+      clientSecret: "ZXhhbXBsZS1hcHAtc2VjcmV0"
+
+    extraArgs:
+      email-domain: "*"
+      upstream: "file:///dev/null"
+      http-address: "0.0.0.0:4180"
+
+    service:
+      type: ClusterIP
+      port: 80
+      annotations: {}
+      # foo.io/bar: "true"
+
+    ingress:
+      enabled: true
+      hosts:
+        auth.gke.rholcombe30.com:
+        - /oauth2
+      annotations:
+        kubernetes.io/ingress.class: "nginx"
+        certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+      tls:
+      - secretName: auth-tls
+        hosts:
+        - auth.gke.rholcombe30.com
