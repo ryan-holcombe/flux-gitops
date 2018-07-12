@@ -32,3 +32,4 @@ spec:
       - dashboard.gke.rholcombe30.com
     rbac:
       create: true
+      clusterAdminRole: true
