@@ -11,16 +11,20 @@ spec:
   values:
     image: gfkse/oauth2_proxy:kubernetes-3-ca-certs
     config:
-      clientID: "my-cluster"
-      clientSecret: "ZXhhbXBsZS1hcHAtc2VjcmV0"
+      clientID: "0oaffmd6e8Qy1uqGd0h7"
+      clientSecret: "17xVSE3Zw2kNhp9sufMEp87_1TS8e5elBJrGe0aS"
+      cookieSecret: "uiojfwPs3kSvy9XKk/RK8A=="
 
     extraArgs:
       email-domain: "*"
       http-address: "0.0.0.0:4180"
       provider: oidc
-      redirect-url: https://auth.gke.rholcombe30.com/oauth2/callback
-      oidc-issuer-url: https://dex.gke.rholcombe30.com
+      #redirect-url: https://auth.gke.rholcombe30.com/oauth2/callback
+      oidc-issuer-url: https://dev-638248.oktapreview.com/oauth2/default
       cookie-secure: false
+      whitelist-domain: .gke.rholcombe30.com
+      cookie-domain: .gke.rholcombe30.com
+      set-authorization-header: true
 
     ingress:
       enabled: true

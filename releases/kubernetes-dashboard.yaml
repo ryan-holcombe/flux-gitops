@@ -17,9 +17,15 @@ spec:
       path: /
       annotations:
         kubernetes.io/ingress.class: "nginx"
-        ingress.kubernetes.io/ssl-redirect: "false"
         certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+        nginx.ingress.kubernetes.io/ssl-redirect: "true"
         nginx.ingress.kubernetes.io/secure-backends: "true"
+        nginx.ingress.kubernetes.io/auth-url: "https://auth.gke.rholcombe30.com/oauth2/auth"
+        nginx.ingress.kubernetes.io/auth-signin: "https://auth.gke.rholcombe30.com/oauth2/start?rd=https://$host$request_uri$is_args$args"
+        # adds authorization header for kubernetes-dashboard
+        nginx.ingress.kubernetes.io/configuration-snippet: |
+          auth_request_set $token $upstream_http_authorization;
+          proxy_set_header Authorization $token;
       tls:
       - secretName: dashboard-tls
       hosts:
